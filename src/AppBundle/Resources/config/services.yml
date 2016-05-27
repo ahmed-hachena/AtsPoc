@@ -1,0 +1,7 @@
+services:
+    extractor.factory:
+        class: AppBundle\Extractor\ExtractorFactory
+    extraction.engine:
+        class: AppBundle\Extractor\ExtractionEngine
+        arguments:
+            - '@extractor.factory'

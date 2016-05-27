@@ -1,0 +1,7 @@
+AppBundle\Entity\User:
+    exclusion_policy: ALL
+    xml_root_name: user
+    properties:
+        name:
+            expose: true
+            type: string
