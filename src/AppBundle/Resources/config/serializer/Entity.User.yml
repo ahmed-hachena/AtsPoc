@@ -1,7 +1,70 @@
 AppBundle\Entity\User:
     exclusion_policy: ALL
-    xml_root_name: user
+    xml_root_name: item
     properties:
-        name:
+        index:
+            type: integer
             expose: true
+        guid:
             type: string
+            expose: true
+        isActive:
+            type: boolean
+            expose: true
+            serialized_name: isActive
+        balance:
+            type: string
+            expose: true
+        picture:
+            type: string
+            expose: true
+        age:
+            type: integer
+            expose: true
+        eyeColor:
+            type: string
+            expose: true
+            serialized_name: eyeColor
+        name:
+            type: array
+            expose: true
+        company:
+            type: string
+            expose: true
+        email:
+            type: string
+            expose: true
+        phone:
+            type: string
+            expose: true
+        address:
+            type: string
+            expose: true
+        about:
+            type: string
+            expose: true
+        registered:
+            type: string
+            expose: true
+        latitude:
+            type: float
+            expose: true
+        longitude:
+            type: float
+            expose: true
+        tags:
+            type: array
+            expose: true
+        range:
+            type: array
+            expose: true
+        friends:
+            type: array
+            expose: true
+        greeting:
+            type: string
+            expose: true
+        favoriteFruit:
+            type: string
+            expose: true
+            serialized_name: favoriteFruit

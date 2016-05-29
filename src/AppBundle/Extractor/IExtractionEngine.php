@@ -11,7 +11,14 @@ interface IExtractionEngine
      * Run the extraction process
      * 
      * @param string $resource
-     * @param string $format
+     * @param string $type
      */
-    public function run($resource, $format);
+    public function run($resource, $type);
+
+    /**
+     * Save Users list
+     * 
+     * @param array $users
+     */
+    public function save($users);
 }

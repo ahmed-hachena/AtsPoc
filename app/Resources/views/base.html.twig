@@ -2,12 +2,53 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}ATS Poc{% endblock %}</title>
+        {% block stylesheets %}
+            {% stylesheets
+            'bundles/app/theme/css/bootstrap.min.css'
+            'bundles/app/theme/css/font-awesome.min.css'
+            'bundles/app/theme/css/sb-admin-2.css'
+            filter='cssrewrite'
+            %}
+            <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+            <div id="wrapper">
+
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="">ATS Poc</a>
+                    </div>
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <a href=""><i class="fa fa-gear fa-fw"></i> Config</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="fa fa-list fa-fw"></i> Data</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div id="page-wrapper">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+        {% block javascripts %}
+            {% javascripts
+            'bundles/app/theme/js/jquery.min.js'
+            'bundles/app/theme/js/bootstrap.min.js'
+            'bundles/app/theme/js/metisMenu.min.js'
+            'bundles/app/theme/js/sb-admin-2.js'
+            %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
     </body>
 </html>

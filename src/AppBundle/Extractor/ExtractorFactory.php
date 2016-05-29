@@ -2,6 +2,9 @@
 
 namespace AppBundle\Extractor;
 
+use AppBundle\RequestHandler\GuzzleRequestHandler;
+use JMS\Serializer\SerializerInterface;
+
 /**
  * Class ExtractorFactory
  */
@@ -10,18 +13,20 @@ class ExtractorFactory
     /**
      * Create staticly the desired Extractor
      * 
-     * @param string $format
-     * @return JSONExtractor
+     * @param string $type
+     * @param GuzzleRequestHandler $guzzleRequestHandler
+     * @param SerializerInterface $serializer
+     * @return XMLExtractor|JSONExtractor
      * @throws \Exception
      */
-    public static function CreateExtractor($format)
+    public static function CreateExtractor($type, GuzzleRequestHandler $guzzleRequestHandler, SerializerInterface $serializer)
     {
-        switch ($format) {
+        switch ($type) {
             case ExtractorEnum::EXTRACTOR_XML:
-                $extrator = new XMLExtractor();
+                $extrator = new XMLExtractor($guzzleRequestHandler, $serializer);
                 break;
             case ExtractorEnum::EXTRACTOR_JSON:
-                $extrator = new JSONExtractor();
+                $extrator = new JSONExtractor($guzzleRequestHandler, $serializer);
                 break;
             default :
                 throw new \Exception(

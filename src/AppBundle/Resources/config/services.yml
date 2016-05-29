@@ -1,7 +1,26 @@
 services:
+    json_extractor:
+        class: AppBundle\Extractor\JSONExtractor
+        arguments:
+            - '@app.guzzle_request_handler'
+            - '@jms_serializer'
+    xml_extractor:
+        class: AppBundle\Extractor\XMLExtractor
+        arguments:
+            - '@app.guzzle_request_handler'
+            - '@jms_serializer'
     extractor.factory:
         class: AppBundle\Extractor\ExtractorFactory
     extraction.engine:
         class: AppBundle\Extractor\ExtractionEngine
         arguments:
             - '@extractor.factory'
+            - '@app.guzzle_request_handler'
+            - '@jms_serializer'
+            - '@doctrine.orm.entity_manager'
+    guzzle.client:
+        class: GuzzleHttp\Client
+    app.guzzle_request_handler:
+        class: AppBundle\RequestHandler\GuzzleRequestHandler
+        arguments:
+            - '@guzzle.client'
