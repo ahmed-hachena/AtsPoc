@@ -53,10 +53,10 @@ AppBundle\Entity\User:
             type: float
             expose: true
         tags:
-            type: array
+            type: array<string>
             expose: true
         range:
-            type: array
+            type: array<integer>
             expose: true
         friends:
             type: array
